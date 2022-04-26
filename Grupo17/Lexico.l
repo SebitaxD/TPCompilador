@@ -1,11 +1,12 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+//#include <conio.h>
 #include "y.tab.h"
 #include "math.h"
 #include <string.h>
 #define LIMITE 30
-#define LIMITEFLOAT 40
+//#define LIMITEFLOAT 40 //OP_ASIG		[:]
 #define LIMITEENT 5
 
 typedef struct{
@@ -43,12 +44,11 @@ CTE_STRING		\".+\"
 CONST_ENT	({DIGITO})+
 CARACTERCOM		@|\?|\"|\.|\,|\+|\t|\n|\/|\_|\:|\;|¿|\*|{LETRA}|{DIGITO}|{ESPACIO} 
 CONST_REAL	  ({DIGITO})*"."({DIGITO})+|({DIGITO})+"."({DIGITO})*
-COMENTARIO  	("-")(\/)({CARACTERCOM})*(("-")(\/)({CARACTERCOM})*(\/)("-"))?({CARACTERCOM})*(\/)("-")
+COMENTARIO  	("-")(\/)({CARACTERCOM})*(\/)("-")
 ID			({LETRA})({LETRA}|{DIGITO})*
 
 IF			"if"
 INLIST  "inlist"
-BETWEEN  "BETWEEN"
 WHILE		"while"
 DECVAR		"DECVAR"
 ENDDEC		"ENDDEC"
@@ -61,8 +61,10 @@ AND     "AND"
 OR      "OR"
 NOT     "NOT"
 READ    "read"
-  
-OP_ASIG		[:]
+BETWEEN		"between"
+
+OP_ASIG		[=]
+DOS_PUNTOS	[:]
 OP_SUMA		[+]
 OP_MULT		[*]
 OP_MAY		[>]
@@ -88,7 +90,7 @@ COMA		[,]
 	
 {IF}		      {return IF;}
 {INLIST}      {return INLIST;}
-{BETWEEN}      {return BETWEEN;}
+{BETWEEN}		{return BETWEEN;}
 {ELSE}        {return ELSE;}
 {WHILE}       {return WHILE;}
 {DECVAR}	    {return DECVAR;}
@@ -119,6 +121,7 @@ COMA		[,]
 {STRING}      {return STRING;}
 
 {OP_ASIG}		{return OP_ASIG;}
+{DOS_PUNTOS}	{return DOS_PUNTOS;}
 {OP_SUMA}		{return OP_SUMA;}
 {OP_RESTA}		{return OP_RESTA;}
 {OP_MULT}		{return OP_MULT;}
