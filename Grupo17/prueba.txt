@@ -1,51 +1,55 @@
 DECVAR
-var2,var3 : float
-var2,var4,var5 : integer
+var3 ;var9 : float
+var4;var6;var7 : integer
+a;b;c;e;f;d;z : integer
 ENDDEC
 
--/      RANGOS       /-
+-/OPERACIONES ARITMETICAS/-
+write "Ingrese Variable b:";
+read b;
+a:10;
+z: a+3*2-8/(2+2)+b;
+write z;
 
--/ variableConNombreFueraDelRangoEstablecido : 4 /-
+var9 : 0.99 + 2.58 * 49.;
+write var9;
 
--/ var2 : 45432;/-
+write "fin operaciones";
 
--/ var2 : 45432222222222222222222222222;/-
-
--/ var3 : 341282346600000000000000000000000000000.0; /-
-
--/ var4 : 0.00000000000000000000000000000000000003302823466;/-
-
--/ var5 : "Esto  es   una prueba   para1   ";/-
-
--/     CICLOS ANIDADOS, TEMAS ESPECIALES Y COMUNES , SELECCIONES, ASIGNACIONES   /-
-
-var2 = (3.5);
-var3 = 2.1 - (4 + 3);
-var2 = 25555555555555555555555.5;
-var1 = "Hola";
-
-read var; 
-if(var1 == var2 AND between(var, [(2.3*167) ; var2]))
-{
-    if(var1 == var2 OR var2 >= var4)
+if(a == 8 OR b > 5)
+{   
+    write "Ciclo while";
+    while(a > 0 AND b > 0)
     {
-        while(var3!=var4 AND var4==var5)
-        {
-            var1 = var2 + 3;
-        }
+        a : a - 2;
+        b : b - 2;
+        write a;
+    }
+    write "fin Ciclo while";
+}
+else
+{   
+    write "Inlist";
+    write "Ingrese Variable Var4:";
+    read var4;
+    if(inlist(var4;[2*b+7 ; 12 ; (34+d)*a+b ; 48]))
+    {
+        write "encontro var4";
     }
     else
     {
-        if(inlist(a;[.99;99.;2*b+7]) AND var1>var2)
-        {
-            while(NOT var3!=var4)
-            {
-                var1 = var2 + 3;
-            }
-        }
-        write "hola que tal";
-        write var1;
+        write "no encontro var4";
     }
 }
-
-
+-/DESICIONES CICLOS TEMAS ESPECIALES ANIDAMIENTOS/-
+write "If negado";
+write "Ingrese Variable e:";
+read e;
+if(NOT e > 5)
+{
+    write "e es mayor a 5";
+}
+else
+{
+    write "e no es mayor a 5";
+}
